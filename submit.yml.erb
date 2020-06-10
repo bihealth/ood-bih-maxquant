@@ -1,0 +1,18 @@
+<%-
+  cpus = bih_cpus.to_i
+  mem = bih_mem.to_i
+  days = bih_days.to_i
+-%>
+---
+batch_connect:
+  template: vnc
+script:
+  native:
+    - "--cpus-per-task"
+    - "<%= cpus %>"
+    - "--mem"
+    - "<%= mem %>"
+    - "--partition"
+    - "<%= bih_partition %>"
+    - "--time"
+    - "<%= days %>-0"
