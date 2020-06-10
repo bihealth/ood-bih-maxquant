@@ -1,0 +1,8 @@
+---
+name: MaxQuant
+category: Interactive Apps
+subcategory: Proteomics
+role: batch_connect
+description: |
+  This app will launch MaxQuant on the BIH server.
+

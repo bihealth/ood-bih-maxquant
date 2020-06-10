@@ -23,5 +23,6 @@ cd "${HOME}"
 # Start MaxQuant
 #
 
-matlab -desktop
 mono /opt/MaxQuant/MaxQuant.exe
+# wait $$ does not work (MaxQuant.exe detaches)
+sleep infinity

@@ -6,6 +6,18 @@
 ---
 batch_connect:
   template: vnc
+  script_wrapper: |
+    set -x
+    cat << "EOF" >container.sh
+    set -x
+    %s
+    EOF
+    echo "==="
+    cat container.sh
+    echo "==="
+    export SINGULARITY_BINDPATH="/fast"
+    singularity run /opt/ood/singularity-images/bih-maxquant_1.6.14.sif container.sh
+
 script:
   native:
     - "--cpus-per-task"
