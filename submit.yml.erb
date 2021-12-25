@@ -12,18 +12,20 @@ batch_connect:
     set -x
     %s
     EOF
+    chmod +x container.sh
     echo "==="
     cat container.sh
     echo "==="
-    export SINGULARITY_BINDPATH="/fast,/data/gpfs-1"
-    singularity run /opt/ood/singularity-images/bih-maxquant_1.6.14.sif container.sh
+    export SINGULARITY_BINDPATH="/fast,/data/gpfs-1,/opt/ood,/srv,/var,/run/user/$(id -u)"
+    export WEBSOCKIFY_CMD=websockify
+    singularity run /opt/ood/singularity-images/bih-maxquant-2.0.3.0.sif $PWD/container.sh
 
 script:
   native:
     - "--cpus-per-task"
     - "<%= cpus %>"
     - "--mem"
-    - "<%= mem %>"
+    - "<%= mem * 1024 %>"
     - "--partition"
     - "<%= bih_partition %>"
     - "--time"
