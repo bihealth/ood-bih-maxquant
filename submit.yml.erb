@@ -15,7 +15,7 @@ batch_connect:
     echo "==="
     cat container.sh
     echo "==="
-    export SINGULARITY_BINDPATH="/fast"
+    export SINGULARITY_BINDPATH="/fast,/data/gpfs-1"
     singularity run /opt/ood/singularity-images/bih-maxquant_1.6.14.sif container.sh
 
 script:
